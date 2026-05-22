@@ -9,12 +9,16 @@
 </p>
 
 <p align="center">
-  <a href="https://runapi.ai/models/gpt.md"><strong>Model Reference</strong></a> · <a href="https://skills.sh/runapi-ai/gpt"><strong>Install Skill</strong></a> · <a href="https://github.com/runapi-ai/gpt"><strong>Skill Repo</strong></a> · <a href="https://runapi.ai/models.md"><strong>All Models</strong></a>
+  <a href="https://runapi.ai/models/gpt"><strong>Model Reference</strong></a> · <a href="https://github.com/runapi-ai/gpt"><strong>Skill Repo</strong></a> · <a href="https://runapi.ai/models"><strong>All Models</strong></a>
 </p>
 
 <div align="center">
 
-[![skills.sh](https://skills.sh/b/runapi-ai/gpt)](https://skills.sh/runapi-ai/gpt)
+[![skills.sh](https://www.skills.sh/b/runapi-ai/gpt)](https://www.skills.sh/runapi-ai/gpt/gpt)
+[![ClawHub](https://img.shields.io/badge/ClawHub-runapi--gpt-111827)](https://clawhub.ai/runapi-ai/runapi-gpt)
+[![Model Reference](https://img.shields.io/badge/Model%20Reference-runapi.ai-0f766e)](https://runapi.ai/models/gpt)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-skills.sh-2563eb)](https://www.skills.sh/runapi-ai)
+[![License](https://img.shields.io/github/license/runapi-ai/gpt)](https://github.com/runapi-ai/gpt/blob/main/LICENSE)
 
 </div>
 <br/>
