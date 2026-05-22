@@ -12,17 +12,22 @@ The canonical agent file is `skills/gpt/SKILL.md`.
 
 ## Install the skill
 
-Pick one:
-
-**A.** With [skills CLI](https://github.com/vercel-labs/skills):
-
 ```bash
 npx skills add runapi-ai/gpt -g
 ```
 
-**B.** Or manually: clone this repo and copy `skills/gpt/` into your agent's
-skills directory (for example `~/.claude/skills/` for Claude Code, or the
-`skills/` directory of a Codex / Gemini CLI plugin checkout).
+Or paste this prompt to your AI agent:
+
+```text
+Install the gpt skill for me:
+
+1. Clone https://github.com/runapi-ai/gpt
+2. Copy the skills/gpt/ directory into your
+   user-level skills directory (e.g. ~/.claude/skills/
+   for Claude Code, ~/.codex/skills/ for Codex).
+3. Verify that SKILL.md is present.
+4. Confirm the install path when done.
+```
 
 ## Use the GPT API on RunAPI
 
