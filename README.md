@@ -1,6 +1,23 @@
-# GPT API Skill for RunAPI
+<p align="center">
+  <a href="https://github.com/runapi-ai/gpt">
+    <h3 align="center">GPT API Skill for RunAPI</h3>
+  </a>
+</p>
+
+<p align="center">
+  Configure existing OpenAI SDK clients to use GPT models on RunAPI.
+</p>
+
+<p align="center">
+  <a href="https://runapi.ai/models/gpt.md"><strong>Model Reference</strong></a> · <a href="https://skills.sh/runapi-ai/gpt"><strong>Install Skill</strong></a> · <a href="https://github.com/runapi-ai/gpt"><strong>Skill Repo</strong></a> · <a href="https://runapi.ai/models.md"><strong>All Models</strong></a>
+</p>
+
+<div align="center">
 
 [![skills.sh](https://skills.sh/b/runapi-ai/gpt)](https://skills.sh/runapi-ai/gpt)
+
+</div>
+<br/>
 
 Call the GPT API through RunAPI with the official OpenAI SDK — point any
 OpenAI-compatible client at `https://runapi.ai/v1`, send `gpt-5.2`,
