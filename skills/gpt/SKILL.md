@@ -3,7 +3,7 @@ name: gpt
 description: Call the GPT API (gpt-5.2, gpt-5.4, gpt-5.4-mini, gpt-5.5, gpt-5.3-codex) through RunAPI using the official OpenAI SDK or any OpenAI-compatible client. Use when the user asks for OpenAI / GPT chat, streaming completions, vision input, tool use / function calling, reasoning effort, the Responses API, or Codex coding tasks, or when they want to point an existing OpenAI SDK setup at RunAPI as the base URL.
 documentation: https://runapi.ai/models/gpt.md
 provider_page: https://runapi.ai/providers/openai.md
-catalog: https://runapi.ai/models
+catalog: https://runapi.ai/models.md
 metadata:
   openclaw:
     homepage: https://runapi.ai/models/gpt
@@ -214,6 +214,5 @@ codex
 ## Routing
 
 - Model page: <https://runapi.ai/models/gpt.md>
-- GPT API docs: <https://runapi.ai/docs#gpt>
 - Provider page: <https://runapi.ai/providers/openai.md>
 - Catalog: <https://runapi.ai/models.md>
