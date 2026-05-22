@@ -16,8 +16,6 @@
 
 [![skills.sh](https://www.skills.sh/b/runapi-ai/gpt)](https://www.skills.sh/runapi-ai/gpt/gpt)
 [![ClawHub](https://img.shields.io/badge/ClawHub-runapi--gpt-111827)](https://clawhub.ai/runapi-ai/runapi-gpt)
-[![Model Reference](https://img.shields.io/badge/Model%20Reference-runapi.ai-0f766e)](https://runapi.ai/models/gpt)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-skills.sh-2563eb)](https://www.skills.sh/runapi-ai)
 [![License](https://img.shields.io/github/license/runapi-ai/gpt)](https://github.com/runapi-ai/gpt/blob/main/LICENSE)
 
 </div>
