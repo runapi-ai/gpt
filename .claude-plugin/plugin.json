@@ -1,0 +1,10 @@
+{
+  "name": "gpt",
+  "version": "0.2.2",
+  "description": "RunAPI GPT API skill for Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents",
+  "skills": [
+    {
+      "path": "skills/gpt/SKILL.md"
+    }
+  ]
+}
