@@ -1,6 +1,6 @@
 ---
 name: gpt
-description: Call the GPT API (gpt-5.2, gpt-5.4, gpt-5.4-mini, gpt-5.5, gpt-5.3-codex) through RunAPI using the official OpenAI SDK or any OpenAI-compatible client. Use when the user asks for OpenAI / GPT chat, streaming completions, vision input, tool use / function calling, reasoning effort, the Responses API, or Codex coding tasks, or when they want to point an existing OpenAI SDK setup at RunAPI as the base URL.
+description: Call the GPT API (gpt-5.2, gpt-5.4, gpt-5.4-mini, gpt-5.5, gpt-5.3-codex) and OpenAI text embeddings through RunAPI using the official OpenAI SDK or any OpenAI-compatible client. Use when the user asks for OpenAI / GPT chat, streaming completions, vision input, tool use / function calling, reasoning effort, the Responses API, embeddings, semantic search vectors, or Codex coding tasks, or when they want to point an existing OpenAI SDK setup at RunAPI as the base URL.
 documentation: https://runapi.ai/models/gpt.md
 provider_page: https://runapi.ai/providers/openai.md
 catalog: https://runapi.ai/models.md
@@ -26,8 +26,9 @@ metadata:
 Use the official **OpenAI SDK** (Python, TypeScript, Ruby) — or any
 OpenAI-compatible HTTP client — and switch the base URL to
 `https://runapi.ai/v1`. The endpoints speak the standard OpenAI protocol:
-**Chat Completions** (`POST /v1/chat/completions`) and the **Responses API**
-(`POST /v1/responses`). No client code changes beyond `base_url` and `api_key`.
+**Chat Completions** (`POST /v1/chat/completions`), the **Responses API**
+(`POST /v1/responses`), and **Embeddings** (`POST /v1/embeddings`). No client
+code changes beyond `base_url` and `api_key`.
 
 ## Setup
 
@@ -43,7 +44,7 @@ Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 | Python | `OpenAI(api_key=..., base_url="https://runapi.ai/v1")` |
 | TypeScript | `new OpenAI({ apiKey: ..., baseURL: "https://runapi.ai/v1" })` |
 | Ruby | `OpenAI::Client.new(access_token: ..., uri_base: "https://runapi.ai/v1")` |
-| curl | `POST https://runapi.ai/v1/chat/completions` (or `/v1/responses`) |
+| curl | `POST https://runapi.ai/v1/chat/completions` (or `/v1/responses`, `/v1/embeddings`) |
 
 ## Pick the right endpoint
 
@@ -51,6 +52,7 @@ Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 |---|---|
 | `gpt-5.2`, `gpt-5.4`, `gpt-5.4-mini`, `gpt-5.4-nano`, `gpt-5.5`, `gpt-5.3-codex`, `gpt-5.3-codex-spark` | Chat Completions **or** Responses |
 | `gpt-5.2-pro`, `gpt-5.4-pro`, `gpt-5.5-pro` | Responses **only** (per OpenAI) |
+| `text-embedding-3-large`, `text-embedding-3-small`, `text-embedding-ada-002` | Embeddings **only** |
 
 ## Core recipe — Chat Completions
 
@@ -101,6 +103,27 @@ print(response.json())
 
 The Responses API takes `input` (string or structured), `reasoning.effort`
 (`"low"` / `"medium"` / `"high"`), and optional `include` for thinking blocks.
+
+## Core recipe — Embeddings
+
+```python
+response = client.embeddings.create(
+    model="text-embedding-3-small",
+    input=["search document", "query text"],
+    encoding_format="float",
+)
+print(response.data[0].embedding)
+print(response.usage)
+```
+
+```typescript
+const response = await client.embeddings.create({
+  model: "text-embedding-3-small",
+  input: ["search document", "query text"],
+  encoding_format: "float",
+});
+console.log(response.data[0].embedding);
+```
 
 ## Streaming
 
@@ -191,6 +214,9 @@ Returns OpenAI-compatible model objects. If the API Key has
 | `gpt-5.3-codex-spark` | Chat, Responses | Faster Codex variant |
 | `gpt-5.2` | Chat, Responses | Cost-effective |
 | `gpt-5.2-pro` | Responses only | Reasoning |
+| `text-embedding-3-large` | Embeddings | High-capacity vectors |
+| `text-embedding-3-small` | Embeddings | Efficient vectors |
+| `text-embedding-ada-002` | Embeddings | Legacy-compatible vectors |
 
 ## Connect Codex CLI itself
 
@@ -204,6 +230,8 @@ codex
 
 - Pro models (`gpt-5.*-pro`) reject Chat Completions — always use Responses
   for them. Other models accept either endpoint.
+- Embedding models only work on `/v1/embeddings`; do not send them to Chat
+  Completions or Responses.
 - Use streaming for any response longer than a few hundred tokens. Do not
   hold the agent on a long blocking request.
 - `reasoning_effort` is supported on every GPT model above; default is

@@ -21,11 +21,12 @@
 </div>
 <br/>
 
-Call the GPT API through RunAPI with the official OpenAI SDK — point any
-OpenAI-compatible client at `https://runapi.ai/v1`, send `gpt-5.2`,
-`gpt-5.4`, `gpt-5.4-mini`, `gpt-5.5`, or `gpt-5.3-codex`, and pay through one
-RunAPI balance. This skill teaches Claude Code, Codex, Gemini CLI, Cursor,
-and 50+ agents how to wire the OpenAI SDK up to the GPT API on RunAPI.
+Call the GPT API and OpenAI text embeddings through RunAPI with the official
+OpenAI SDK — point any OpenAI-compatible client at `https://runapi.ai/v1`,
+send `gpt-5.2`, `gpt-5.4`, `gpt-5.4-mini`, `gpt-5.5`, `gpt-5.3-codex`, or
+`text-embedding-3-small`, and pay through one RunAPI balance. This skill
+teaches Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents how to wire the
+OpenAI SDK up to the GPT API on RunAPI.
 
 The canonical agent file is `skills/gpt/SKILL.md`.
 
@@ -51,9 +52,10 @@ Install the gpt skill for me:
 ## Use the GPT API on RunAPI
 
 The GPT API on RunAPI speaks the standard OpenAI protocol: Chat Completions
-(`POST /v1/chat/completions`) and the Responses API (`POST /v1/responses`).
-The official OpenAI SDK works unchanged once `base_url` points at
-`https://runapi.ai/v1` and `api_key` is set to a RunAPI API Key.
+(`POST /v1/chat/completions`), the Responses API (`POST /v1/responses`), and
+Embeddings (`POST /v1/embeddings`). The official OpenAI SDK works unchanged
+once `base_url` points at `https://runapi.ai/v1` and `api_key` is set to a
+RunAPI API Key.
 
 ```python
 from openai import OpenAI
@@ -97,6 +99,26 @@ curl -X POST "https://runapi.ai/v1/chat/completions" \
 
 Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 
+## Use embeddings
+
+```python
+response = client.embeddings.create(
+    model="text-embedding-3-small",
+    input=["search document", "query text"],
+    encoding_format="float",
+)
+print(response.data[0].embedding)
+```
+
+```javascript
+const response = await client.embeddings.create({
+  model: "text-embedding-3-small",
+  input: ["search document", "query text"],
+  encoding_format: "float",
+});
+console.log(response.data[0].embedding);
+```
+
 ## Connect Codex CLI itself
 
 ```bash
@@ -119,8 +141,12 @@ codex
 | `gpt-5.3-codex-spark` | Chat Completions, Responses | Faster Codex variant |
 | `gpt-5.2` | Chat Completions, Responses | Cost-effective |
 | `gpt-5.2-pro` | Responses only | Reasoning |
+| `text-embedding-3-large` | Embeddings | High-capacity vectors |
+| `text-embedding-3-small` | Embeddings | Efficient vectors |
+| `text-embedding-ada-002` | Embeddings | Legacy-compatible vectors |
 
 Pro models (`gpt-5.*-pro`) only support the Responses API per OpenAI.
+Embedding models only support the Embeddings API.
 
 ## Routing
 
