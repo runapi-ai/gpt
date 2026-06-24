@@ -22,7 +22,7 @@
 <br/>
 
 Call the GPT API and OpenAI text embeddings through RunAPI with the official
-OpenAI SDK — point any OpenAI-compatible client at `https://runapi.ai/v1`,
+OpenAI SDK -- point any OpenAI-compatible client at `https://runapi.ai/v1`,
 send `gpt-5.2`, `gpt-5.4`, `gpt-5.4-mini`, `gpt-5.5`, `gpt-5.3-codex`, or
 `text-embedding-3-small`, and pay through one RunAPI balance. This skill
 teaches Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents how to wire the
@@ -119,6 +119,35 @@ const response = await client.embeddings.create({
 console.log(response.data[0].embedding);
 ```
 
+## Protocol compatibility
+
+GPT generation models can also be called from Anthropic-compatible
+`/v1/messages` clients and Gemini `contents` clients on RunAPI. Use those paths
+when an existing agent runtime already expects that request shape; for new GPT
+app code, prefer the OpenAI-compatible setup above.
+
+```bash
+curl -X POST "https://runapi.ai/v1/messages" \
+  -H "x-api-key: YOUR_RUNAPI_TOKEN" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.4",
+    "max_tokens": 1024,
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
+
+```bash
+curl -X POST \
+  "https://runapi.ai/v1beta/models/gpt-5.4:streamGenerateContent" \
+  -H "x-goog-api-key: YOUR_RUNAPI_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"contents":[{"role":"user","parts":[{"text":"Hello!"}]}]}'
+```
+
+Embeddings remain available only on `/v1/embeddings`.
+
 ## Connect Codex CLI itself
 
 ```bash
@@ -145,8 +174,8 @@ codex
 | `text-embedding-3-small` | Embeddings | Efficient vectors |
 | `text-embedding-ada-002` | Embeddings | Legacy-compatible vectors |
 
-Pro models (`gpt-5.*-pro`) only support the Responses API per OpenAI.
-Embedding models only support the Embeddings API.
+Pro models (`gpt-5.*-pro`) only support the Responses API. Embedding models
+only support the Embeddings API.
 
 ## Routing
 
@@ -162,6 +191,9 @@ Embedding models only support the Embeddings API.
   them in commits or shell history.
 - Stream long responses (`stream: true`) so the agent can release the
   terminal/IO loop early.
+- Default GPT-native integrations to OpenAI-compatible endpoints. Use
+  Anthropic-compatible or Gemini `contents` paths only for existing clients
+  that require those request shapes.
 - For pricing, rate-limit, and commercial-usage answers, link to
   <https://runapi.ai/models/gpt> rather than this README.
 
