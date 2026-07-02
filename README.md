@@ -158,24 +158,25 @@ codex
 
 ## Supported GPT models
 
-| Model ID | API | Notes |
-|---|---|---|
-| `gpt-5.5` | Chat Completions, Responses | Latest general model |
-| `gpt-5.5-pro` | Responses only | Reasoning-heavy |
-| `gpt-5.4` | Chat Completions, Responses | Production default |
-| `gpt-5.4-mini` | Chat Completions, Responses | Cost-optimized |
-| `gpt-5.4-nano` | Chat Completions, Responses | Smallest, fastest |
-| `gpt-5.4-pro` | Responses only | Reasoning |
-| `gpt-5.3-codex` | Chat Completions, Responses | Code generation |
-| `gpt-5.3-codex-spark` | Chat Completions, Responses | Faster Codex variant |
-| `gpt-5.2` | Chat Completions, Responses | Cost-effective |
-| `gpt-5.2-pro` | Responses only | Reasoning |
-| `text-embedding-3-large` | Embeddings | High-capacity vectors |
-| `text-embedding-3-small` | Embeddings | Efficient vectors |
-| `text-embedding-ada-002` | Embeddings | Legacy-compatible vectors |
+| Model ID | Notes |
+|---|---|
+| `gpt-5.5` | Latest general model |
+| `gpt-5.5-pro` | Reasoning-heavy |
+| `gpt-5.4` | Production default |
+| `gpt-5.4-mini` | Cost-optimized |
+| `gpt-5.4-nano` | Smallest, fastest |
+| `gpt-5.4-pro` | Reasoning |
+| `gpt-5.3-codex` | Code generation |
+| `gpt-5.3-codex-spark` | Faster Codex variant |
+| `gpt-5.2` | Cost-effective |
+| `gpt-5.2-pro` | Reasoning |
+| `text-embedding-3-large` | High-capacity vectors |
+| `text-embedding-3-small` | Efficient vectors |
+| `text-embedding-ada-002` | Legacy-compatible vectors |
 
-Pro models (`gpt-5.*-pro`) only support the Responses API. Embedding models
-only support the Embeddings API.
+Chat, reasoning, and Codex models accept every conversational protocol (Chat
+Completions, Responses, Anthropic `/v1/messages`, Gemini `contents`). Embedding
+models are available only on the Embeddings API.
 
 ## Routing
 
