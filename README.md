@@ -23,7 +23,7 @@
 
 Call the GPT API and OpenAI text embeddings through RunAPI with the official
 OpenAI SDK -- point any OpenAI-compatible client at `https://runapi.ai/v1`,
-send `gpt-5.2`, `gpt-5.4`, `gpt-5.4-mini`, `gpt-5.5`, `gpt-5.3-codex`, or
+send any GPT-5 model (see Supported models below) or
 `text-embedding-3-small`, and pay through one RunAPI balance. This skill
 teaches Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents how to wire the
 OpenAI SDK up to the GPT API on RunAPI.
