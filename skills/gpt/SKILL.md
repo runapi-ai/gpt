@@ -103,6 +103,9 @@ print(response.json())
 
 The Responses API takes `input` (string or structured), `reasoning.effort`
 (`"low"` / `"medium"` / `"high"`), and optional `include` for thinking blocks.
+For `gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna`, and
+`gpt-5.3-codex-spark`, use the consistently available subset below when the
+request must not depend on advanced Responses capabilities.
 
 ## Core recipe — Embeddings
 
@@ -172,7 +175,8 @@ Rails/Puma thread. Long generations should always stream.
 ```
 
 Standard OpenAI multimodal block — works on both Chat Completions and
-Responses (Responses also accepts structured `input` items).
+Responses (Responses also accepts structured `input` items). Keep requests for
+the four consistently available subset models text-only.
 
 ## Tool use / function calling / web search
 
@@ -188,8 +192,25 @@ Responses (Responses also accepts structured `input` items).
 }
 ```
 
-`web_search` is supported across the GPT models above. Custom function tools
-use the standard OpenAI `tools` schema.
+Use `web_search` only when hosted tools are available for the selected model.
+Custom function tools use the standard OpenAI `tools` schema.
+
+### Consistently available Responses subset
+
+| Models | Input and transport | Function tools | Prompt caching |
+|---|---|---|---|
+| `gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna` | Text, sync, SSE | Parameterized custom functions | Automatic |
+| `gpt-5.3-codex-spark` | Text, sync, SSE | Parameterless custom functions | Automatic |
+
+For these models, omit `previous_response_id`, `conversation`, `store`,
+`background`, `include`, reasoning items and item references, explicit reasoning
+controls, explicit cache controls, multimodal input, and hosted tools such as
+`web_search`. A request outside this subset may return `request_conflict` before
+usage is reserved. In sync responses and the final `response.completed` event,
+preserve
+`usage.input_tokens_details.cached_tokens` and
+`usage.output_tokens_details.reasoning_tokens` when present. SSE emits one such
+terminal event followed by `[DONE]`.
 
 ## List models
 
@@ -241,9 +262,12 @@ models to generation endpoints or compatibility surfaces.
 | `gpt-5.4-nano` | Smallest, fastest |
 | `gpt-5.4-pro` | Reasoning |
 | `gpt-5.3-codex` | Code generation |
-| `gpt-5.3-codex-spark` | Faster Codex variant |
+| `gpt-5.3-codex-spark` | Faster Codex variant; text and parameterless functions in the consistently available Responses subset |
 | `gpt-5.2` | Cost-effective |
 | `gpt-5.2-pro` | Reasoning |
+| `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
+| `gpt-5.6-sol` | Text and parameterized functions in the consistently available Responses subset |
+| `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
 | `text-embedding-3-large` | High-capacity vectors |
 | `text-embedding-3-small` | Efficient vectors |
 | `text-embedding-ada-002` | Legacy-compatible vectors |
@@ -267,8 +291,9 @@ codex
   that require those request shapes.
 - Use streaming for any response longer than a few hundred tokens. Do not
   hold the agent on a long blocking request.
-- `reasoning_effort` is supported on every GPT model above; default is
-  usually `"high"` for non-Pro models.
+- Omit explicit reasoning controls for the consistently available subset on
+  `gpt-5.6-sol`, `gpt-5.6-terra`, `gpt-5.6-luna`, and
+  `gpt-5.3-codex-spark`.
 - Pricing, rate limits, quotas — link to <https://runapi.ai/models/gpt.md>,
   not this skill file.
 

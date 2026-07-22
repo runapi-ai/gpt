@@ -99,6 +99,22 @@ curl -X POST "https://runapi.ai/v1/chat/completions" \
 
 Get a RunAPI API Key at <https://runapi.ai/api_keys>.
 
+### Consistently available Responses subset
+
+For `gpt-5.6-sol`, `gpt-5.6-terra`, and `gpt-5.6-luna`, the consistently
+available `/v1/responses` subset supports text input, sync and SSE responses,
+parameterized custom functions, and automatic prompt caching.
+`gpt-5.3-codex-spark` supports the same subset with parameterless custom
+functions only.
+
+Omit state fields (`previous_response_id`, `conversation`, `store`,
+`background`, `include`), reasoning items and item references, explicit
+reasoning and cache controls, multimodal input, and hosted tools such as
+`web_search`. Requests outside this subset may return `request_conflict` before
+usage is reserved. Cached and reasoning token details remain available in sync
+usage and the final `response.completed` event when returned. SSE emits that
+terminal event once, followed by `[DONE]`.
+
 ## Use embeddings
 
 ```python
@@ -167,9 +183,12 @@ codex
 | `gpt-5.4-nano` | Smallest, fastest |
 | `gpt-5.4-pro` | Reasoning |
 | `gpt-5.3-codex` | Code generation |
-| `gpt-5.3-codex-spark` | Faster Codex variant |
+| `gpt-5.3-codex-spark` | Text and parameterless functions in the consistently available Responses subset |
 | `gpt-5.2` | Cost-effective |
 | `gpt-5.2-pro` | Reasoning |
+| `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
+| `gpt-5.6-sol` | Text and parameterized functions in the consistently available Responses subset |
+| `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
 | `text-embedding-3-large` | High-capacity vectors |
 | `text-embedding-3-small` | Efficient vectors |
 | `text-embedding-ada-002` | Legacy-compatible vectors |

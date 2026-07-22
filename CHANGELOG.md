@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.2.10](https://github.com/runapi-ai/gpt/releases/tag/v0.2.10) - 2026-07-22
+
+### Added
+- Document text, streaming, custom function, and automatic prompt caching support for GPT 5.6 and Codex Spark.
+
+### Changed
+- Clarify advanced Responses capabilities that may return `request_conflict` before usage is reserved, plus the terminal SSE Usage and `[DONE]` contract.
+
+
 ## [v0.2.9](https://github.com/runapi-ai/gpt/releases/tag/v0.2.9) - 2026-07-02
 
 ### Changed
