@@ -200,7 +200,7 @@ models are available only on the Embeddings API.
 ## Routing
 
 - GPT API on RunAPI: <https://runapi.ai/models/gpt>
-- GPT API docs: <https://runapi.ai/docs#gpt>
+- GPT API docs: <https://runapi.ai/docs/api/openai/chat-completions>
 - Provider page: <https://runapi.ai/providers/openai>
 - Browse the full RunAPI catalog: <https://runapi.ai/models>
 - Skill repository: <https://github.com/runapi-ai/gpt>
