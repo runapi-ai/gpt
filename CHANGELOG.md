@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.2.11](https://github.com/runapi-ai/gpt/releases/tag/v0.2.11) - 2026-08-10
+
+### Changed
+- Complete marketplace distribution for the RunAPI GPT skill.
+
+
 ## [v0.2.10](https://github.com/runapi-ai/gpt/releases/tag/v0.2.10) - 2026-07-22
 
 ### Added
