@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.2.12](https://github.com/runapi-ai/gpt/releases/tag/v0.2.12) - 2026-08-12
+
+### Changed
+- Document GPT authentication, request, result verification, and stop boundaries in the primary recipe, with compatibility protocols loaded only when required.
+
+### Removed
+- Stop advertising the retired gpt-5.2-pro model.
+  Migration: Use a currently advertised GPT model instead; gpt-5.2 remains available through Chat Completions but no longer supports Responses.
+- Stop advertising Responses support for gpt-5.2.
+  Migration: Send gpt-5.2 requests to Chat Completions, Anthropic Messages, or Gemini contents; choose another advertised GPT model when Responses is required.
+
+
 ## [v0.2.11](https://github.com/runapi-ai/gpt/releases/tag/v0.2.11) - 2026-08-10
 
 ### Changed

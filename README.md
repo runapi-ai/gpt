@@ -185,7 +185,6 @@ codex
 | `gpt-5.3-codex` | Code generation |
 | `gpt-5.3-codex-spark` | Text and parameterless functions in the consistently available Responses subset |
 | `gpt-5.2` | Cost-effective |
-| `gpt-5.2-pro` | Reasoning |
 | `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-sol` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
@@ -193,9 +192,10 @@ codex
 | `text-embedding-3-small` | Efficient vectors |
 | `text-embedding-ada-002` | Legacy-compatible vectors |
 
-Chat, reasoning, and Codex models accept every conversational protocol (Chat
-Completions, Responses, Anthropic `/v1/messages`, Gemini `contents`). Embedding
-models are available only on the Embeddings API.
+Chat, reasoning, and Codex models accept the conversational protocols listed in
+the generated contract. Most accept Chat Completions, Responses, Anthropic
+`/v1/messages`, and Gemini `contents`; `gpt-5.2` does not accept Responses.
+Embedding models are available only on the Embeddings API.
 
 ## Routing
 
