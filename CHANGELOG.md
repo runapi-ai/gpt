@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.2.13](https://github.com/runapi-ai/gpt/releases/tag/v0.2.13) - 2026-09-16
+
+### Added
+- Add GPT-Live-1 realtime audio sessions to the supported model guidance.
+
+### Changed
+- Publish the verified GPT-Live-1 WebRTC and WebSocket contract and delegation boundaries.
+- Document gpt-4o-mini as an available GPT model and synchronize generated contract metadata.
+
+
 ## [v0.2.12](https://github.com/runapi-ai/gpt/releases/tag/v0.2.12) - 2026-08-12
 
 ### Changed

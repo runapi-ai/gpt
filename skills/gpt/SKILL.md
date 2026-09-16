@@ -64,10 +64,20 @@ Keep embedding models on `/v1/embeddings`.
 
 Load [compatibility protocols](references/compatibility-protocols.md) only when an existing client requires Anthropic Messages or Gemini contents.
 
+## Live audio
+
+`gpt-live-1` is available only on the dedicated Live transport. Use WebRTC
+with `POST /v1/live/webrtc` and a client SDP offer, or WebSocket with
+`GET /v1/live/websocket` and a first `session.start` frame. Live sessions may
+delegate hosted tools through `delegation.type: responses` or return function
+work through `delegation.type: client`; Chat Completions and Responses calls do
+not accept this model.
+
 ## Supported models
 
 | Model ID | Use when |
 |---|---|
+| `gpt-live-1` | Realtime audio sessions over WebRTC or WebSocket |
 | `gpt-5.5` | Latest general model |
 | `gpt-5.5-pro` | Reasoning-heavy |
 | `gpt-5.4` | Production default |
@@ -77,9 +87,11 @@ Load [compatibility protocols](references/compatibility-protocols.md) only when 
 | `gpt-5.3-codex` | Code generation |
 | `gpt-5.3-codex-spark` | Faster Codex variant; text and parameterless functions in the consistently available Responses subset |
 | `gpt-5.2` | Cost-effective |
+| `gpt-4o-mini` | — |
 | `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-sol` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
+| `gpt-6-astra` | — |
 | `text-embedding-3-large` | High-capacity vectors |
 | `text-embedding-3-small` | Efficient vectors |
 | `text-embedding-ada-002` | Legacy-compatible vectors |
