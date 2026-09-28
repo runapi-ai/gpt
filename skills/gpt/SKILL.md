@@ -77,7 +77,6 @@ not accept this model.
 
 | Model ID | Use when |
 |---|---|
-| `gpt-live-1` | Realtime audio sessions over WebRTC or WebSocket |
 | `gpt-5.5` | Latest general model |
 | `gpt-5.5-pro` | Reasoning-heavy |
 | `gpt-5.4` | Production default |

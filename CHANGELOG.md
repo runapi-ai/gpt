@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.2.14](https://github.com/runapi-ai/gpt/releases/tag/v0.2.14) - 2026-09-28
+
+### Changed
+- GPT-Live-1 is no longer listed among the GPT LLM models because Live sessions are their own transport; the skill keeps documenting Live usage and nothing about Live requests changed.
+
+
 ## [v0.2.13](https://github.com/runapi-ai/gpt/releases/tag/v0.2.13) - 2026-09-16
 
 ### Added
