@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.2.16](https://github.com/runapi-ai/gpt/releases/tag/v0.2.16) - 2026-09-29
+
+### Removed
+- gpt-5.2-pro (retired 2026-08-11), gpt-5.4-pro and gpt-5.5-pro (both retired 2026-09-28) are no longer listed; requests for them return 410 model_retired.
+  Migration: Use gpt-5.5 instead of gpt-5.2-pro, gpt-5.4-pro or gpt-5.5-pro.
+
+
 ## [v0.2.15](https://github.com/runapi-ai/gpt/releases/tag/v0.2.15) - 2026-09-29
 
 ### Added

@@ -81,11 +81,9 @@ Responses calls do not accept this model.
 | Model ID | Use when |
 |---|---|
 | `gpt-5.5` | Latest general model |
-| `gpt-5.5-pro` | Reasoning-heavy |
 | `gpt-5.4` | Production default |
 | `gpt-5.4-mini` | Cost-optimized |
 | `gpt-5.4-nano` | Smallest, fastest |
-| `gpt-5.4-pro` | Reasoning |
 | `gpt-5.2` | Cost-effective |
 | `gpt-4o-mini` | — |
 | `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
@@ -93,7 +91,6 @@ Responses calls do not accept this model.
 | `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-6-astra` | — |
 | `codex-auto-review` | — |
-| `gpt-5.2-pro` | — |
 | `gpt-6-sol` | — |
 | `gpt-6-luna` | — |
 | `text-embedding-3-large` | High-capacity vectors |
