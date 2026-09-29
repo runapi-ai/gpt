@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.2.15](https://github.com/runapi-ai/gpt/releases/tag/v0.2.15) - 2026-09-29
+
+### Added
+- codex-auto-review and gpt-5.2-pro are listed among the supported GPT models; gpt-5.2-pro currently accepts OpenAI Responses only.
+- GPT-6 Sol (gpt-6-sol) and GPT-6 Luna (gpt-6-luna) are now listed as available GPT models.
+
+### Changed
+- Document that GPT-Live Responses delegation accepts function tools on WebSocket, with delegated events wrapped in response.event and function results returned through response.item.create and response.create.
+
+### Removed
+- gpt-5.3-codex (retired 2026-09-28) and gpt-5.3-codex-spark (retired 2026-09-14) are no longer listed; requests for them return 410 model_retired.
+  Migration: Use gpt-5.6-sol instead of gpt-5.3-codex or gpt-5.3-codex-spark.
+
+
 ## [v0.2.14](https://github.com/runapi-ai/gpt/releases/tag/v0.2.14) - 2026-09-28
 
 ### Changed

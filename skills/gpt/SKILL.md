@@ -43,8 +43,7 @@ followed by `[DONE]`.
 
 For `gpt-5.6-luna`, `gpt-5.6-sol`, and `gpt-5.6-terra`, start with text input,
 sync or SSE transport, parameterized custom functions, and automatic prompt
-caching. `gpt-5.3-codex-spark` has the same verified subset with parameterless
-custom functions. Add reasoning controls, multimodal input, hosted tools, or
+caching. Add reasoning controls, multimodal input, hosted tools, or
 continuation state only when the current RunAPI contract verifies that shape.
 
 ### Verify result
@@ -69,9 +68,13 @@ Load [compatibility protocols](references/compatibility-protocols.md) only when 
 `gpt-live-1` is available only on the dedicated Live transport. Use WebRTC
 with `POST /v1/live/webrtc` and a client SDP offer, or WebSocket with
 `GET /v1/live/websocket` and a first `session.start` frame. Live sessions may
-delegate hosted tools through `delegation.type: responses` or return function
-work through `delegation.type: client`; Chat Completions and Responses calls do
-not accept this model.
+delegate backend work through `delegation.type: responses` or return function
+work through `delegation.type: client`. Responses delegation accepts hosted
+tools on both transports and `function` tools on WebSocket: delegated events
+arrive wrapped in `response.event`, a function call arrives as a nested
+`response.output_item.done`, and the client answers with `response.item.create`
+(`function_call_output`) followed by `response.create`. Chat Completions and
+Responses calls do not accept this model.
 
 ## Supported models
 
@@ -83,14 +86,16 @@ not accept this model.
 | `gpt-5.4-mini` | Cost-optimized |
 | `gpt-5.4-nano` | Smallest, fastest |
 | `gpt-5.4-pro` | Reasoning |
-| `gpt-5.3-codex` | Code generation |
-| `gpt-5.3-codex-spark` | Faster Codex variant; text and parameterless functions in the consistently available Responses subset |
 | `gpt-5.2` | Cost-effective |
 | `gpt-4o-mini` | — |
 | `gpt-5.6-luna` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-sol` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-6-astra` | — |
+| `codex-auto-review` | — |
+| `gpt-5.2-pro` | — |
+| `gpt-6-sol` | — |
+| `gpt-6-luna` | — |
 | `text-embedding-3-large` | High-capacity vectors |
 | `text-embedding-3-small` | Efficient vectors |
 | `text-embedding-ada-002` | Legacy-compatible vectors |
