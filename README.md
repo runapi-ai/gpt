@@ -198,7 +198,9 @@ Responses calls do not accept this model.
 | `gpt-5.6-terra` | Text and parameterized functions in the consistently available Responses subset |
 | `gpt-6-astra` | — |
 | `codex-auto-review` | — |
+| `gpt-5-pro` | Text-only analysis and coding with the Responses API; other input modalities await billing review |
 | `gpt-6-sol` | — |
+| `gpt-6.1-sol` | — |
 | `gpt-6-luna` | — |
 | `text-embedding-3-large` | High-capacity vectors |
 | `text-embedding-3-small` | Efficient vectors |

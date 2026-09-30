@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.2.17](https://github.com/runapi-ai/gpt/releases/tag/v0.2.17) - 2026-09-30
+
+### Added
+- List gpt-5-pro for text-only Responses requests.
+- Add GPT-6.1 Sol with the same protocol and function-tool support as the other GPT models.
+
+### Fixed
+- Keep model compatibility guidance separate from the generated model roster.
+
+
 ## [v0.2.16](https://github.com/runapi-ai/gpt/releases/tag/v0.2.16) - 2026-09-29
 
 ### Removed
